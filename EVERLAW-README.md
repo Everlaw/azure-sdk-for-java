@@ -12,7 +12,11 @@ After the changes are merged, follow the instructions below for updating the ver
 
 ### Making local changes
 
-If something specific to our fork needs to be changed, open a pull request targeting the `origin/main` branch of this repository.
+If something specific to our fork needs to be changed, make the changes in a new branch.
+
+Ensure any files that you modify for the first time contain our copyright notice as defined in the "Modifying Packages Included in the Everlaw Platform" section of [this doc](https://drive.google.com/file/d/1Qio1Une8HvL7DZMjQMieljgpZ5rWpvwR/view).
+
+Open a pull request targeting the `origin/main` branch of this repository.
 
 **Note:** _Make sure the base of your PR is OUR FORK. **DO NOT** target PRs to the upstream fork._
 
