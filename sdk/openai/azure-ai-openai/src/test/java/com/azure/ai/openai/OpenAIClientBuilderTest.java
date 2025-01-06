@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
+// Portions (c) 2025 Everlaw, Inc.
 package com.azure.ai.openai;
 
 import static com.azure.ai.openai.implementation.NonAzureOpenAIClientImpl.OPEN_AI_HOST_PATTERN;
