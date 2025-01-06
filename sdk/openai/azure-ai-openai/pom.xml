@@ -14,6 +14,7 @@
 
   <groupId>com.azure</groupId>
   <artifactId>azure-ai-openai</artifactId>
+  <!-- modified according to the instructions in EVERLAW-README.md -->
   <version>1.0.0-everlaw.0</version> <!-- {x-version-update;com.azure:azure-ai-openai;current} -->
   <packaging>jar</packaging>
 
