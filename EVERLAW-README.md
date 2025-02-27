@@ -8,6 +8,8 @@ The specific package we use is located in `sdk/openai/azure-ai-openai`.
 
 If the original repository has changes that need to be included in our fork, follow the instructions [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) for syncing our fork.
 
+Specifically, configure the upstream repository as a remote for this repository, fetch all tags with `git fetch --tags upstream`, and then merge upstream changes into your local branch using `git merge <tag>`.
+
 After the changes are merged, follow the instructions below for updating the version of this package and publishing a new version.
 
 ### Making local changes
