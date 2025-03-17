@@ -71,4 +71,4 @@ b. Run `mvn deploy -f sdk/openai/azure-ai-openai/pom.xml`
 
 c. Go to [our artifactory](https://github.com/orgs/Everlaw/packages?repo_name=servers) and find the package. Ensure the latest version matches what you just uploaded.
 
-d. Delete the artifacts located in your local Maven cache and `servers/lib/` and try pulling in the new version from a project that uses it. This will ensure you correctly uploaded the package to Github.
+d. Open a PR into `servers` to update the version of this package. Our CI process will ensure that the package can be downloaded from the artifactory.
