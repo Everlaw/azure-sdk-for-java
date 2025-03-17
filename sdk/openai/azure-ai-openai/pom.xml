@@ -59,6 +59,14 @@
     <spotbugs.excludeFilterFile>spotbugs-exclude.xml</spotbugs.excludeFilterFile>
   </properties>
 
+  <distributionManagement>
+    <repository>
+      <id>everlaw-github-repository</id>
+      <name>Github Packages</name>
+      <url>https://maven.pkg.github.com/Everlaw/servers</url>
+    </repository>
+  </distributionManagement>
+
   <dependencies>
 
     <!-- compile dependencies -->
