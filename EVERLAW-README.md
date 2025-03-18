@@ -30,9 +30,7 @@ Publish a new version according to the instructions below.
 
 ### Testing
 
-If you build this package, it will install the built artifacts to your local Maven cache (usually located at `~/.m2/repository`).
-
-You can then reference the version you just built in another project, and as long as you clean-build that project, it will pull in your updated code.
+Change the version to a release candidate version like `1.0.0-everlawM+1.rc0`.
 
 Follow the instructions for building from [the upstream's wiki](https://github.com/Azure/azure-sdk-for-java/wiki/Building#pomclientxml-vs-pomdataxml).
 
@@ -41,7 +39,13 @@ Follow the instructions for building from [the upstream's wiki](https://github.c
 **Note:** The most useful commands from the wiki are:
 
  - `mvn install -f eng/code-quality-reports/pom.xml ` for installing build tools (one-time setup usually)
- - `mvn install -f sdk/openai/pom.xml` for building the package we use
+ - `mvn install -f sdk/openai/azure-ai-openai/pom.xml` for building the package we use
+
+Follow the instructions for deploying the release candidate to our repository.
+
+Use the release candidate version in the `servers` repo and ensure any changes/updates work as expected.
+
+If so, follow the instructions for updating the version and deploying the artifacts again without the release candidate suffix.
 
 ### Updating the version and publishing the package to Github
 
@@ -51,9 +55,9 @@ There are two steps:
 
 1. Update the version
 
-Our self-hosted version of this package started on `1.0.0-everlaw.0`.
+Our self-hosted version of this package started on `1.0.0-everlaw0`.
 
-Any time we pull in upstream changes or make changes ourselves, we should bump the suffix one time.
+Any time we pull in upstream changes or make changes ourselves, we should bump the suffix one time (e.g. the first bump would have been to `1.0.0-everlaw1`).
 
 Pulling in upstream changes will often cause a merge conflict with the version number.
 
@@ -61,16 +65,12 @@ Track what the version number was before syncing the fork, and make sure it's up
 
 2. Publish the package
 
-There's a `pyutil` script in the `servers` repository that will help you publish a new version of this library to our Github artifactory.
+The package we use is configured to deploy artifacts directly to our Github Packages repository.
 
-a. Activate the `pyutil` virtual environment and make sure all `pyutil` packages are installed.
+a. Ensure you have a Github PAT that will allow you to read and write to our Github artifactory. Helpful instructions [here](https://everlaw.atlassian.net/wiki/spaces/ENG/pages/403963963/Github+Packages).
 
-b. Ensure you have a Github PAT that will allow you to read and write to our Github artifactory. Helpful instructions [here](https://everlaw.atlassian.net/wiki/spaces/ENG/pages/403963963/Github+Packages).
+b. Run `mvn deploy -f sdk/openai/azure-ai-openai/pom.xml`
 
-c. Ensure your local Maven cache has the current version of this package installed in it. It should be at `~/.m2/repository/com/azure/azure-ai-openai/<version>`.
+c. Go to [our artifactory](https://github.com/orgs/Everlaw/packages?repo_name=servers) and find the package. Ensure the latest version matches what you just uploaded.
 
-d. Run `upload-maven-artifacts-to-github-packages --dir <path-to-artifact-version> --dry-run`. If no output is shown, rerun it without the `--dry-run` flag.
-
-e. Go to [our artifactory](https://github.com/orgs/Everlaw/packages?repo_name=servers) and find the package. Ensure the latest version matches what you just uploaded.
-
-f. Delete the artifacts located in your local Maven cache and try pulling in the new version from a project that uses it. This will ensure you correctly uploaded the package to Github.
+d. Open a PR into `servers` to update the version of this package. Our CI process will ensure that the package can be downloaded from the artifactory.
