@@ -30,13 +30,9 @@ Publish a new version according to the instructions below.
 
 ### Testing
 
-If you build this package, it will install the built artifacts to your local Maven cache (usually located at `~/.m2/repository`).
+Change the version to a release candidate version like `1.0.0-everlawM+1.rc0`.
 
 Follow the instructions for building from [the upstream's wiki](https://github.com/Azure/azure-sdk-for-java/wiki/Building#pomclientxml-vs-pomdataxml).
-
-Copy the jar file of the new version to `servers/lib/`.
-
-You can then reference the version you just built in the `servers` repository.
 
 **Note:** Make sure you're using Java 11 to build the package and that you change back to 17 (or whatever version we're using) before working on the `servers` repo again.
 
@@ -44,6 +40,12 @@ You can then reference the version you just built in the `servers` repository.
 
  - `mvn install -f eng/code-quality-reports/pom.xml ` for installing build tools (one-time setup usually)
  - `mvn install -f sdk/openai/azure-ai-openai/pom.xml` for building the package we use
+
+Follow the instructions for deploying the release candidate to our repository.
+
+Use the release candidate version in the `servers` repo and ensure any changes/updates work as expected.
+
+If so, follow the instructions for updating the version and deploying the artifacts again without the release candidate suffix.
 
 ### Updating the version and publishing the package to Github
 
